@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.urls import reverse
 
@@ -13,7 +14,13 @@ class Topic(models.Model):
 
 
 class Redactor(AbstractUser):
-    years_of_experience = models.IntegerField(default=0)
+    years_of_experience = models.IntegerField(
+        default=0,
+        validators=[
+            MinValueValidator(0, message="Value of experience should not be less than 0."),
+            MaxValueValidator(80, message="Value of experience should not be more than 80."),
+        ]
+    )
 
     class Meta:
         verbose_name = "redactor"
