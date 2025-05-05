@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views import generic
 
 from agency.models import Redactor, Newspaper, Topic
 
@@ -21,3 +23,24 @@ def index(request):
     }
 
     return render(request, "agency/index.html", context=context)
+
+
+class TopicListView(generic.ListView):
+    model = Topic
+
+
+class TopicCreateView(generic.CreateView):
+    fields = "__all__"
+    model = Topic
+    success_url = reverse_lazy("agency:topic-list")
+
+
+class TopicUpdateView(generic.UpdateView):
+    fields = "__all__"
+    model = Topic
+    success_url = reverse_lazy("agency:topic-list")
+
+
+class TopicDeleteView(generic.DeleteView):
+    model = Topic
+    success_url = reverse_lazy("agency:topic-list")
