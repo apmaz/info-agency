@@ -2,7 +2,12 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from agency.forms import RedactorCreationForm, RedactorExperienceUpdateForm, NewspaperCustomForm
+from agency.forms import (
+    RedactorCreationForm,
+    RedactorExperienceUpdateForm,
+    NewspaperCustomForm,
+    TopicCustomForm
+)
 from agency.models import Redactor, Newspaper, Topic
 
 
@@ -31,7 +36,7 @@ class TopicListView(generic.ListView):
 
 
 class TopicCreateView(generic.CreateView):
-    fields = "__all__"
+    form_class = TopicCustomForm
     model = Topic
     success_url = reverse_lazy("agency:topic-list")
 

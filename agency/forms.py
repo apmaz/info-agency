@@ -14,6 +14,15 @@ class RedactorCreationForm(UserCreationForm):
             "years_of_experience",
         )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields["username"].widget.attrs["placeholder"] = "Enter username"
+        self.fields["password1"].widget.attrs["placeholder"] = "Enter password"
+        self.fields["password2"].widget.attrs["placeholder"] = "Confirm password"
+        self.fields["first_name"].widget.attrs["placeholder"] = "First name"
+        self.fields["last_name"].widget.attrs["placeholder"] = "Last name"
+
 
 class RedactorExperienceUpdateForm(forms.ModelForm):
     class Meta:
@@ -29,7 +38,7 @@ class NewspaperCustomForm(forms.ModelForm):
     title = forms.CharField(
         widget=forms.TextInput(
             attrs={
-        'placeholder': "Enter title here..."
+        'placeholder': "Enter title"
             }
         ),
 
@@ -41,7 +50,7 @@ class NewspaperCustomForm(forms.ModelForm):
             attrs={
             "rows": 5,
             "cols": 25,
-            "placeholder": "Enter content here..."
+            "placeholder": "Enter content"
             }
         ),
         label=mark_safe("<strong>Content</strong>"),
@@ -57,4 +66,15 @@ class NewspaperCustomForm(forms.ModelForm):
         queryset=Redactor.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         label=mark_safe("<strong>Choose a redactor</strong>")
+    )
+
+class TopicCustomForm(forms.ModelForm):
+    class Meta:
+        model = Topic
+        fields = ("name",)
+
+    name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={"placeholder": "Enter topic name"}
+        )
     )

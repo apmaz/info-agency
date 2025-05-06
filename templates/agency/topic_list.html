@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>
-    Topic List
+    Topics List
     <a href="{% url "agency:topic-create" %}" class="btn btn-primary link-to-page">
       Create
     </a>
@@ -12,6 +12,7 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Count of newspapers with this topic</th>
         <th>Update</th>
         <th>Delete</th>
       </tr>
@@ -23,6 +24,9 @@
           </td>
           <td>
               {{ topic.name }}
+          </td>
+          <td>
+              {{ topic.newspapers_by_topic.count }}
           </td>
           <td>
               <a href="{% url "agency:topic-update" pk=topic.id %}">
