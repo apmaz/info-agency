@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Newspapers List
+    <a href="{% url "agency:newspaper-create" %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+  {% if newspaper_list %}
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Count authors</th>
+      <th>Count topics</th>
+      <th>Published date</th>
+
+    </tr>
+  {% for newspaper in newspaper_list %}
+    <tr>
+      <td>{{ newspaper.id }}</td>
+      <td>
+        <a href="{% url "agency:newspaper-detail" newspaper.id %}">
+        {{ newspaper.title }}</a>
+      </td>
+      <td>{{ newspaper.publishers.all.count }}</td>
+      <td>{{ newspaper.topic.all.count }}</td>
+      <td>{{ newspaper.published_date }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+  {% else %}
+    <p>There are no newspapers in the agency.</p>
+  {% endif %}
+{% endblock %}

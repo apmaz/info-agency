@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Newspaper: {{ newspaper.title }}
+    <a href="{% url "agency:newspaper-delete" pk=newspaper.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url "agency:newspaper-update" pk=newspaper.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
+  </h1>
+
+  <p><strong>Published date:</strong> {{ newspaper.published_date }}</p>
+  <p><strong>Topics ({{ newspaper.topic.all.count }}):</strong></p>
+  {% for topic in newspaper.topic.all %}
+    <ul>
+      <li>{{ topic.name }}</li>
+    </ul>
+  {% endfor %}
+
+  <p><strong>Redactors: ({{ newspaper.publishers.all.count }})</strong></p>
+  {% for redactor in newspaper.publishers.all %}
+    <ul>
+      <li>{{ redactor.first_name }} {{ redactor.last_name }}</li>
+    </ul>
+  {% endfor %}
+
+  <p><strong>Content:</strong></p>
+  {{ newspaper.content }}
+
+{% endblock %}
