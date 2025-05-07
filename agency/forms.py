@@ -78,3 +78,78 @@ class TopicCustomForm(forms.ModelForm):
             attrs={"placeholder": "Enter topic name"}
         )
     )
+
+
+class TopicSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search Topic by name",
+                "style": "width: 250px;",
+            }
+        ),
+    )
+
+
+class RedactorSearchForm(forms.Form):
+    SEARCH_CHOICES = [
+        ("username", "Username"),
+        ("first_name", "First name"),
+        ("last_name", "Last name"),
+        ("years_of_experience", "Years of experience"),
+        ("all", "All fields"),
+    ]
+
+    query = forms.CharField(
+        max_length=255,
+        required=False,
+        label="Search",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Enter search data",
+                "style": "width: 250px;",
+            }
+        ),
+    )
+
+    search_by = forms.ChoiceField(
+        choices=SEARCH_CHOICES,
+        required=False,
+        label="by",
+        widget=forms.Select(attrs={"style": "width: 150px;"})
+    )
+
+
+class NewspaperSearchForm(forms.Form):
+    SEARCH_CHOICES = [
+        ("title", "Title"),
+        ("content", "Content"),
+        ("topic", "Topic"),
+        ("published_date", "Published date"),
+        ("publishers_username", "Publisher (Username)"),
+        ("publishers_first_name", "Publisher (First name)"),
+        ("publishers_last_name", "Publisher (Last name)"),
+        ("all", "All Fields"),
+    ]
+
+    query = forms.CharField(
+        max_length=255,
+        required=False,
+        label="Search",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Enter search data",
+                "style": "width: 250px;",
+            }
+        ),
+    )
+
+    search_by = forms.ChoiceField(
+        choices=SEARCH_CHOICES,
+        required=False,
+        label="by",
+        widget=forms.Select(attrs={"style": "width: 150px;"})
+    )
