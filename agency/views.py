@@ -36,6 +36,7 @@ def index(request):
 
 class TopicListView(LoginRequiredMixin, generic.ListView):
     model = Topic
+    paginate_by = 5
 
 
 class TopicCreateView(LoginRequiredMixin, generic.CreateView):
@@ -57,6 +58,7 @@ class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class RedactorListView(LoginRequiredMixin, generic.ListView):
     model = Redactor
+    paginate_by = 5
 
 
 class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
@@ -83,7 +85,7 @@ class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
 class NewspaperListView(LoginRequiredMixin, generic.ListView):
     model = Newspaper
     queryset = Newspaper.objects.prefetch_related("topic", "publishers")
-
+    paginate_by = 5
 
 class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
     model = Newspaper
