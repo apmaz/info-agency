@@ -75,7 +75,7 @@ class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class RedactorListView(LoginRequiredMixin, generic.ListView):
     model = Redactor
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = Redactor.objects.all()
@@ -142,20 +142,21 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
             query = form.cleaned_data["query"]
             search_by = form.cleaned_data["search_by"]
 
+
             if query:
                 if search_by == "title":
                     queryset = queryset.filter(title__icontains=query)
                 elif search_by == "content":
                     queryset = queryset.filter(content__icontains=query)
                 elif search_by == "published_date":
-                    queryset = queryset.filter(published_date__icontains=query)
+                    queryset = queryset.filter(published_date=query)
                 elif search_by == "topic":
                     queryset = queryset.filter(topic__name__icontains=query)
-                elif search_by == "publisher_username":
+                elif search_by == "publishers_username":
                     queryset = queryset.filter(publishers__username__icontains=query)
-                elif search_by == "publisher_first_name":
+                elif search_by == "publishers_first_name":
                     queryset = queryset.filter(publishers__first_name__icontains=query)
-                elif search_by == "publisher_last_name":
+                elif search_by == "publishers_last_name":
                     queryset = queryset.filter(publishers__last_name__icontains=query)
                 elif search_by == "all":
                     queryset = queryset.filter(

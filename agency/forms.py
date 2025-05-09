@@ -87,7 +87,7 @@ class TopicSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Search Topic by name",
+                "placeholder": "Enter a search query",
                 "style": "width: 250px;",
             }
         ),
@@ -109,7 +109,7 @@ class RedactorSearchForm(forms.Form):
         label="Search",
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Enter search data",
+                "placeholder": "Enter a search query",
                 "style": "width: 250px;",
             }
         ),
@@ -119,7 +119,7 @@ class RedactorSearchForm(forms.Form):
         choices=SEARCH_CHOICES,
         required=False,
         label="by",
-        widget=forms.Select(attrs={"style": "width: 150px;"})
+        widget=forms.Select(attrs={"style": "width: 250px;"})
     )
 
 
@@ -128,7 +128,7 @@ class NewspaperSearchForm(forms.Form):
         ("title", "Title"),
         ("content", "Content"),
         ("topic", "Topic"),
-        ("published_date", "Published date"),
+        ("published_date", "Published date (YYYY-MM-DD)"),
         ("publishers_username", "Publisher (Username)"),
         ("publishers_first_name", "Publisher (First name)"),
         ("publishers_last_name", "Publisher (Last name)"),
@@ -141,7 +141,7 @@ class NewspaperSearchForm(forms.Form):
         label="Search",
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Enter search data",
+                "placeholder": "Enter a search query",
                 "style": "width: 250px;",
             }
         ),
@@ -151,5 +151,5 @@ class NewspaperSearchForm(forms.Form):
         choices=SEARCH_CHOICES,
         required=False,
         label="by",
-        widget=forms.Select(attrs={"style": "width: 150px;"})
+        widget=forms.Select(attrs={"style": "width: 250px;"})
     )
