@@ -1,18 +1,77 @@
 {% extends "base.html" %}
+{% block navigation %}
+  {% include 'includes/navigation.html' %}
+{% endblock navigation %}
+
+{% block title %}Home Information Agency{% endblock %}
 
 {% block content %}
-    <h1>Information agency</h1>
-    <p>Welcome to Best Information agency Ever!</p>
-    <h2>Dynamic content</h2>
-    <p>The Information agency has the following record counts:</p>
-    <ul>
-        <li><strong>Redactors:</strong> {{ num_redactors }}</li>
-        <li><strong>Newspapers:</strong> {{ num_newspapers }}</li>
-        <li><strong>Topics:</strong> {{ num_topics }}</li>
-    </ul>
+  <div class="page-header min-vh-75 d-flex align-items-center"
+       style="background-image: url('{{ ASSETS_ROOT }}/img/bg10.jpg'); background-size: cover;">
+    <span class="mask" style="background-color: rgba(0, 0, 0, 0.8);"></span>
 
-    <p>You have visited this page
-        {{ num_visits }} time{{ num_visits|pluralize }}.
-    </p>
+    <div class="container" style="padding-top: 80px;">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 class="text-white d-flex justify-content-between align-items-center">
+            Welcome to Information Agency
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
+    <section class="pt-3 pb-4" id="count-stats">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9 mx-auto py-3">
+            <div class="row">
+
+              <div class="col-md-4 position-relative">
+                <div class="p-3 text-center">
+                  <h1><span id="state1" style="color: black;" countTo="{{ num_topics }}">0</span></h1>
+                  <h5 class="mt-3">Topics</h5>
+                  <p class="text-sm font-weight-normal">
+                    This is the number of unique topics used to categorize all publications.
+                  </p>
+                </div>
+                <hr class="vertical dark">
+              </div>
+
+              <div class="col-md-4 position-relative">
+                <div class="p-3 text-center">
+                  <h1><span id="state2" style="color: black;" countTo="{{ num_newspapers }}">0</span></h1>
+                  <h5 class="mt-3">Newspapers</h5>
+                  <p class="text-sm font-weight-normal">
+                    Newspaper issues stored in the database, covering various topics and events.
+                  </p>
+                </div>
+                <hr class="vertical dark">
+              </div>
+
+              <div class="col-md-4 position-relative">
+                <div class="p-3 text-center">
+                  <h1><span id="state3" style="color: black;" countTo="{{ num_redactors }}">0</span></h1>
+                  <h5 class="mt-3">Redactors</h5>
+                  <p class="text-sm font-weight-normal">
+                    The number of editors registered in the system. Each of them is responsible for creating and editing content within selected topics.
+                  </p>
+                </div>
+              </div>
+
+            </div> <!-- row -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 {% endblock %}
+
+{% block footer %}
+  {% include 'includes/footer.html' %}
+{% endblock footer %}
+
+{% block javascripts %}
+  {% include 'includes/scripts.html' %}
+{% endblock javascripts %}

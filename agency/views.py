@@ -75,7 +75,7 @@ class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class RedactorListView(LoginRequiredMixin, generic.ListView):
     model = Redactor
-    paginate_by = 10
+    paginate_by = 5
 
     def get_queryset(self):
         queryset = Redactor.objects.all()

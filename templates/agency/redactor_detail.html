@@ -1,30 +1,59 @@
 {% extends "base.html" %}
 
-{% block content %}
-  <h1>
-    Username: {{ redactor.username }}
-    <a href="{% url "agency:redactor-delete" pk=redactor.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
-
-    <a href="{% url "agency:redactor-update" pk=redactor.id %}" class="btn btn-secondary link-to-page">
-      Update age of experience
-    </a>
-  </h1>
-
-  <p><strong>First name:</strong> {{ redactor.first_name }}</p>
-  <p><strong>Last name:</strong> {{ redactor.last_name }}</p>
-  <p><strong>Years of experience:</strong> {{ redactor.years_of_experience }}</p>
-
-  <div class="ml-3">
-    <h4>Newspapers</h4>
-
-    {% for newspaper in redactor.newspapers_by_publisher.all %}
-        <hr>
-        <p><strong>Newspaper:</strong> {{ newspaper.title }}</p>
-        <p class="text-muted"><strong>Id:</strong> {{newspaper.id}}</p>
-    {% empty %}
-      <p>This redactor has no newspapers!</p>
-    {% endfor %}
-  </div>
+{% block title %}
+  Redactor detail
 {% endblock %}
+
+{% block navigation %}
+  {% include 'includes/navigation.html' %}
+{% endblock navigation %}
+
+{% block content %}
+  <div class="page-header min-vh-90 d-flex align-items-center"
+       style="background-image: url('{{ ASSETS_ROOT }}/img/bg10.jpg'); background-size: cover;">
+    <span class="mask" style="background-color: rgba(0, 0, 0, 0.9);"></span>
+
+    <div class="container" style="padding-top: 80px;">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <h4 class="text-white d-flex justify-content-between align-items-center">
+            Redactor Detail
+            <div class="text-end">
+              <a href="{% url 'agency:redactor-delete' pk=redactor.id %}" class="btn btn-outline-danger btn-sm me-2">
+                Delete
+              </a>
+              <a href="{% url 'agency:redactor-update' pk=redactor.id %}" class="btn btn-outline-light btn-sm me-2">
+                Update age of experience
+              </a>
+            </div>
+          </h4>
+
+          <p><strong>First name:</strong><span style="color: white;"> {{ redactor.first_name }}</span></p>
+          <p><strong>Last name:</strong><span style="color: white;"> {{ redactor.last_name }}</span></p>
+          <p><strong>Years of experience:</strong><span style="color: white;"> {{ redactor.years_of_experience }}</span></p>
+          <p><strong>Username:</strong><span style="color: white;"> {{ redactor.username }}</span></p>
+
+          <div class="ml-3">
+            <h4 style="color: white;">The author's newspapers</h4>
+
+            {% for newspaper in redactor.newspapers_by_publisher.all %}
+              <hr>
+              <ul>
+                <li><span style="color: white;"> {{ newspaper.title }} </span></li>
+              </ul>
+            {% empty %}
+              <p><span style="color: white;">This redactor has no newspapers!</span></p>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'includes/footer.html' %}
+{% endblock footer %}

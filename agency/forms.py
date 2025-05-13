@@ -23,6 +23,12 @@ class RedactorCreationForm(UserCreationForm):
         self.fields["first_name"].widget.attrs["placeholder"] = "First name"
         self.fields["last_name"].widget.attrs["placeholder"] = "Last name"
 
+        self.fields["username"].widget.attrs["style"] = "color: white;"
+        self.fields["password1"].widget.attrs["style"] = "color: white;"
+        self.fields["password2"].widget.attrs["style"] = "color: white;"
+        self.fields["first_name"].widget.attrs["style"] = "color: white;"
+        self.fields["last_name"].widget.attrs["style"] = "color: white;"
+
 
 class RedactorExperienceUpdateForm(forms.ModelForm):
     class Meta:
@@ -38,7 +44,8 @@ class NewspaperCustomForm(forms.ModelForm):
     title = forms.CharField(
         widget=forms.TextInput(
             attrs={
-        'placeholder': "Enter title"
+        "placeholder": "Enter title",
+                       "style": "color: white;",
             }
         ),
 
@@ -49,8 +56,9 @@ class NewspaperCustomForm(forms.ModelForm):
         widget=forms.Textarea(
             attrs={
             "rows": 5,
-            "cols": 25,
-            "placeholder": "Enter content"
+            "cols": 20,
+            "placeholder": "Enter content",
+                "style": "color: white;",
             }
         ),
         label=mark_safe("<strong>Content</strong>"),
@@ -68,6 +76,7 @@ class NewspaperCustomForm(forms.ModelForm):
         label=mark_safe("<strong>Choose a redactor</strong>")
     )
 
+
 class TopicCustomForm(forms.ModelForm):
     class Meta:
         model = Topic
@@ -75,7 +84,10 @@ class TopicCustomForm(forms.ModelForm):
 
     name = forms.CharField(
         widget=forms.TextInput(
-            attrs={"placeholder": "Enter topic name"}
+            attrs={
+                "placeholder": "Enter topic name",
+                "style": "color: white;"
+            }
         )
     )
 
@@ -87,8 +99,8 @@ class TopicSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Enter a search query",
-                "style": "width: 250px;",
+                "placeholder": "Search by name",
+                "style": "width: 200px;",
             }
         ),
     )
@@ -105,22 +117,28 @@ class RedactorSearchForm(forms.Form):
 
     query = forms.CharField(
         max_length=255,
+        label="",
         required=False,
-        label="Search",
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Enter a search query",
-                "style": "width: 250px;",
+                "class": "form-control",
+                "style": "color: white; background-color: transparent; border-color: white; width: 150px;",
+                "placeholder": "Search with filter...",
             }
         ),
     )
 
     search_by = forms.ChoiceField(
         choices=SEARCH_CHOICES,
+        label="",
         required=False,
-        label="by",
-        widget=forms.Select(attrs={"style": "width: 250px;"})
+        widget=forms.Select(
+            attrs={
+                "style": "color: white; width: 150px;"
+            }
+        )
     )
+
 
 
 class NewspaperSearchForm(forms.Form):
@@ -138,11 +156,12 @@ class NewspaperSearchForm(forms.Form):
     query = forms.CharField(
         max_length=255,
         required=False,
-        label="Search",
+        label="",
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Enter a search query",
-                "style": "width: 250px;",
+                "class": "form-control",
+                "style": "color: white; background-color: transparent; border-color: white; width: 150px;",
+                "placeholder": "Search with filter...",
             }
         ),
     )
@@ -150,6 +169,10 @@ class NewspaperSearchForm(forms.Form):
     search_by = forms.ChoiceField(
         choices=SEARCH_CHOICES,
         required=False,
-        label="by",
-        widget=forms.Select(attrs={"style": "width: 250px;"})
+        label="",
+        widget=forms.Select(
+            attrs={
+                "style": "color: white; width: 150px;"
+            }
+        )
     )

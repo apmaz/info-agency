@@ -1,0 +1,43 @@
+<!-- Navbar -->
+<div class="container position-sticky z-index-sticky top-0">
+  <div class="row">
+    <div class="col-12">
+      <nav class="navbar navbar-expand-lg blur border-radius-xl mt-4 top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+        <div class="container-fluid px-0">
+
+          <a class="navbar-brand font-weight-bolder ms-sm-3" href="{% url 'agency:index' %}" rel="tooltip" title="Homepage" data-placement="bottom">
+            Homepage
+          </a>
+          <a class="navbar-brand font-weight-bolder ms-sm-3" href="{% url 'agency:topic-list' %}" rel="tooltip" title="All topics" data-placement="bottom">
+            Topics
+          </a>
+          <a class="navbar-brand font-weight-bolder ms-sm-3" href="{% url 'agency:redactor-list' %}" rel="tooltip" title="All redactors" data-placement="bottom">
+            Redactors
+          </a>
+          <a class="navbar-brand font-weight-bolder ms-sm-3" href="{% url 'agency:newspaper-list' %}" rel="tooltip" title="All newspapers" data-placement="bottom">
+            Newspapers
+          </a>
+
+          {% if user.is_authenticated %}
+            <ul class="navbar-nav ms-lg-auto align-items-center">
+              <li class="nav-item me-3 text-white">
+                user: <a href="{{ user.get_absolute_url }}" class="text-white">
+                  {{ user.first_name }} {{ user.last_name }}
+                </a>
+              </li>
+              <li class="nav-item">
+                <form method="post" action="{% url 'logout' %}" class="d-inline">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-link p-0 m-0 d-inline-flex align-items-baseline text-white">
+                    <i class="fa fa-sign-out me-1"></i> Logout
+                  </button>
+                </form>
+              </li>
+            </ul>
+          {% endif %}
+
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
