@@ -1,0 +1,370 @@
+[
+{
+    "model": "agency.topic",
+    "pk": 1,
+    "fields": {
+        "name": "Politics"
+    }
+},
+{
+    "model": "agency.topic",
+    "pk": 2,
+    "fields": {
+        "name": "Crime"
+    }
+},
+{
+    "model": "agency.topic",
+    "pk": 3,
+    "fields": {
+        "name": "Bussines"
+    }
+},
+{
+    "model": "agency.topic",
+    "pk": 4,
+    "fields": {
+        "name": "Art"
+    }
+},
+{
+    "model": "agency.topic",
+    "pk": 5,
+    "fields": {
+        "name": "Trade"
+    }
+},
+{
+    "model": "agency.topic",
+    "pk": 6,
+    "fields": {
+        "name": "Weather"
+    }
+},
+{
+    "model": "agency.topic",
+    "pk": 7,
+    "fields": {
+        "name": "Technology"
+    }
+},
+{
+    "model": "agency.redactor",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$KMgBiSouymzqHc6Ukk7pDe$fnfLT2vzKmbZfKdzGI3AH9U/ViPXoaP+mggwv3njuxI=",
+        "last_login": "2025-05-14T06:11:25.667Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "Thomas",
+        "last_name": "Dickens",
+        "email": "admin@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-05-14T06:09:06.328Z",
+        "years_of_experience": 17,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "agency.redactor",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$zdV6fFyrPrzHDFpvMMx014$NiqY/pMl4Wi1Y77q3BeaBbnr0FD1aDVWWpNNzYCnK5Y=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "robert",
+        "first_name": "Robert",
+        "last_name": "Shakespeare",
+        "email": "robert@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-05-14T06:16:21.458Z",
+        "years_of_experience": 7,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "agency.redactor",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$i7zJUUiuKE9smXlQIzWIxy$Q4lO5sOAWtibQTGw1Z68oSp0krffmrcCYJdRvKXOkwQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "hardy",
+        "first_name": "Arthur",
+        "last_name": "Hardy",
+        "email": "hardy@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-05-14T06:17:35.622Z",
+        "years_of_experience": 4,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "agency.redactor",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$fPKQzdhNmPh2l2ud5FEbTY$odGUwEgh2s7fylC50WFfkcM2KtloQA8i/ZTo4dHMKWs=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "john",
+        "first_name": "John",
+        "last_name": "James",
+        "email": "john@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-05-14T06:18:51.432Z",
+        "years_of_experience": 2,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "agency.redactor",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$ZKYIYW0CuLSfzWM2KHagMO$vRKMHWJlCm9h+8vPrV39h3tsHDzSLShHHswVD7LHo3o=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "jack",
+        "first_name": "Jack",
+        "last_name": "London",
+        "email": "jack@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-05-14T06:20:54.662Z",
+        "years_of_experience": 20,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "agency.redactor",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$uwVxX4UWRlCfWuOmvduZBz$rCkfG7g1W2Atk9dJ4K0j+xP53XhwBzbib2WbzPqm+uQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "martin",
+        "first_name": "Martin",
+        "last_name": "Eden",
+        "email": "martin@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-05-14T06:22:20.010Z",
+        "years_of_experience": 10,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "agency.redactor",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$hX7LAjIuJD5grjccvEmqGx$JEFDqcIEsp4AsIMfpmx9mMMHTsbYuhY34ee+5snhoRQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "mark",
+        "first_name": "Mark",
+        "last_name": "Twain",
+        "email": "mark@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-05-14T06:24:14.809Z",
+        "years_of_experience": 22,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "agency.redactor",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$FCM5FSDSYUVz4VfZitysWC$sBiWr4wesK3KRC3EKfp8I3IZ4w5KKpeFRrX6bFdQ84E=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "ernest",
+        "first_name": "Ernest",
+        "last_name": "Hemingway",
+        "email": "ernest@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-05-14T06:29:08.833Z",
+        "years_of_experience": 17,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "agency.newspaper",
+    "pk": 1,
+    "fields": {
+        "title": "Bitcoin Falls to the bottom!",
+        "content": "Some content about bitcoin Falls to the bottom!",
+        "published_date": "2025-05-14",
+        "topic": [
+            3,
+            5
+        ],
+        "publishers": [
+            4
+        ]
+    }
+},
+{
+    "model": "agency.newspaper",
+    "pk": 2,
+    "fields": {
+        "title": "Is IT still the best sphere to work?",
+        "content": "Some content about is IT still the best sphere to work?",
+        "published_date": "2025-05-14",
+        "topic": [
+            3,
+            7
+        ],
+        "publishers": [
+            6,
+            7
+        ]
+    }
+},
+{
+    "model": "agency.newspaper",
+    "pk": 3,
+    "fields": {
+        "title": "What is cloud storage and why do you need it?",
+        "content": "Some content  about what is cloud storage and why do you need it?",
+        "published_date": "2025-05-14",
+        "topic": [
+            7
+        ],
+        "publishers": [
+            1
+        ]
+    }
+},
+{
+    "model": "agency.newspaper",
+    "pk": 4,
+    "fields": {
+        "title": "Using the terminal in Linux",
+        "content": "Some content about using the terminal in Linux",
+        "published_date": "2025-05-14",
+        "topic": [
+            7
+        ],
+        "publishers": [
+            2
+        ]
+    }
+},
+{
+    "model": "agency.newspaper",
+    "pk": 5,
+    "fields": {
+        "title": "What is the difference between Windows and Linux?",
+        "content": "Some content about what is the difference between Windows and Linux?",
+        "published_date": "2025-05-14",
+        "topic": [
+            7
+        ],
+        "publishers": [
+            1,
+            2,
+            3,
+            5
+        ]
+    }
+},
+{
+    "model": "agency.newspaper",
+    "pk": 6,
+    "fields": {
+        "title": "How to install Windows on your PC",
+        "content": "Some content about how to install Windows on your PC",
+        "published_date": "2025-05-14",
+        "topic": [
+            7
+        ],
+        "publishers": [
+            5,
+            7,
+            8
+        ]
+    }
+},
+{
+    "model": "agency.newspaper",
+    "pk": 7,
+    "fields": {
+        "title": "The latest political and criminal news from Canada",
+        "content": "Some content about the latest political and criminal news from Canada",
+        "published_date": "2025-05-14",
+        "topic": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "publishers": [
+            2,
+            5
+        ]
+    }
+},
+{
+    "model": "agency.newspaper",
+    "pk": 8,
+    "fields": {
+        "title": "They swapped a painting by a famous artist in the Louvre",
+        "content": "Some content about they swapped a painting by a famous artist in the Louvre",
+        "published_date": "2025-05-14",
+        "topic": [
+            2,
+            4
+        ],
+        "publishers": [
+            2,
+            8
+        ]
+    }
+},
+{
+    "model": "agency.newspaper",
+    "pk": 9,
+    "fields": {
+        "title": "Hot weather coming this week",
+        "content": "Some content about hot weather coming this week",
+        "published_date": "2025-05-14",
+        "topic": [
+            6
+        ],
+        "publishers": [
+            6
+        ]
+    }
+},
+{
+    "model": "agency.newspaper",
+    "pk": 10,
+    "fields": {
+        "title": "Gold prices hit new high",
+        "content": "Some content about gold prices hit new high",
+        "published_date": "2025-05-14",
+        "topic": [
+            1,
+            3,
+            5
+        ],
+        "publishers": [
+            4,
+            8
+        ]
+    }
+}
+]
