@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+  Topics list Information Agency
+{% endblock %}
+
+{% block navigation %}
+  {% include 'includes/navigation.html' %}
+{% endblock navigation %}
+
+{% block content %}
+  <div class="page-header min-vh-90 d-flex align-items-center"
+       style="background-image: url('{{ ASSETS_ROOT }}/img/bg10.jpg'); background-size: cover;">
+    <span class="mask" style="background-color: rgba(0, 0, 0, 0.8);"></span>
+
+    <div class="container" style="padding-top: 80px;">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <h4 class="text-white d-flex justify-content-between align-items-center">
+            Topics List
+            <div class="text-end">
+              <a href="{% url 'agency:topic-create' %}" class="btn btn-outline-light btn-sm me-2">
+                Create
+              </a>
+            </div>
+          </h4>
+
+          <!-- Search Form -->
+          <div class="row py-2">
+            <div class="col-lg-4">
+              <form method="get" action="">
+                <div class="d-flex mb-4">
+                  <input
+                    name="name"
+                    class="form-control"
+                    placeholder="Search by name of topic"
+                    type="text"
+                    value="{{ request.GET.name|default:'' }}"
+                    style="color: white; width: 60%; height: 45px; padding: 10px; border-radius: 8px;">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-light ms-2"
+                    style="width: 80px; height: 30px; padding: 0 10px;">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Topic Table -->
+          {% if topic_list %}
+            <table class="table text-white">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Count of newspapers with this topic</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for topic in topic_list %}
+                  <tr>
+                    <td>{{ topic.id }}</td>
+                    <td>{{ topic.name }}</td>
+                    <td>{{ topic.newspapers_by_topic.count }}</td>
+                    <td>
+                      <a href="{% url 'agency:topic-update' pk=topic.id %}" class="text-info">Update</a>
+                    </td>
+                    <td>
+                      <a href="{% url 'agency:topic-delete' pk=topic.id %}" class="text-danger">Delete</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p class="text-white">There are no topics in the service.</p>
+          {% endif %}
+
+          {% block pagination %}
+            {% include "includes/pagination.html" %}
+          {% endblock pagination %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'includes/footer.html' %}
+{% endblock footer %}

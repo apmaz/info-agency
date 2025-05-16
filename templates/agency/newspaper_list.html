@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+  Newspapers list Information Agency
+{% endblock %}
+
+{% block navigation %}
+  {% include 'includes/navigation.html' %}
+{% endblock navigation %}
+
+{% block content %}
+  <div class="page-header min-vh-90 d-flex align-items-center"
+       style="background-image: url('{{ ASSETS_ROOT }}/img/bg10.jpg'); background-size: cover;">
+    <span class="mask" style="background-color: rgba(0, 0, 0, 0.8);"></span>
+
+    <div class="container" style="padding-top: 80px;">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <h4 class="text-white d-flex justify-content-between align-items-center">
+            Newspaper List
+            <div class="text-end">
+              <a href="{% url 'agency:newspaper-create' %}" class="btn btn-outline-light btn-sm me-2">
+                Create
+              </a>
+            </div>
+          </h4>
+
+          <!-- Search Form -->
+          <div class="container">
+            <div class="row py-2">
+              <div class="col-lg-8">
+                <form method="get" action="">
+                  <div class="d-flex gap-2 align-items-center">
+                    {{ search_form.query|as_crispy_field }}
+                    {{ search_form.search_by|as_crispy_field }}
+
+                    <button type="submit"
+                            class="btn btn-outline-light"
+                            style="width: 80px; height: 30px; padding: 0 10px;">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Newspaper Table -->
+          {% if newspaper_list %}
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Count authors</th>
+                  <th>Count topics</th>
+                  <th>Published date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for newspaper in newspaper_list %}
+                  <tr>
+                    <td>{{ newspaper.id }}</td>
+                    <td class="text-white">
+                      <a href="{% url 'agency:newspaper-detail' newspaper.id %}" class="text-info">
+                        {{ newspaper.title }}
+                      </a>
+                    </td>
+                    <td class="text-white">{{ newspaper.publishers.all.count }}</td>
+                    <td class="text-white">{{ newspaper.topic.all.count }}</td>
+                    <td class="text-white">{{ newspaper.published_date }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p class="text-white">There are no newspapers in the agency.</p>
+          {% endif %}
+
+          {% block pagination %}
+            {% include "includes/pagination.html" %}
+          {% endblock pagination %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'includes/footer.html' %}
+{% endblock footer %}

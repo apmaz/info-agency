@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block body_class %}bg-gray-200{% endblock %}
+
+{% block content %}
+  <header class="page-header min-vh-100" style="background-image: url('{{ ASSETS_ROOT }}/img/bg10.jpg'); background-size: cover;">
+    <span class="mask" style="background-color: rgba(0, 0, 0, 0.8);"></span>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-8 mt-8">
+
+          <div class="card shadow-lg blur border border-white mt-5">
+            <div class="card-body p-4">
+
+              <h4 class="text-center mb-4">Login</h4>
+
+              {% if form.errors %}
+                <div class="alert alert-danger text-sm">
+                  Invalid credentials. Please try again.
+                </div>
+              {% endif %}
+
+              <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="text-center">
+                  <button type="submit" class="btn btn-outline-light btn-sm mt-3">Login</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}

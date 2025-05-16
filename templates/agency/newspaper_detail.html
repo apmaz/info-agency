@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Newspaper detail
+{% endblock %}
+
+{% block navigation %}
+  {% include 'includes/navigation.html' %}
+{% endblock navigation %}
+
+{% block content %}
+  <div class="page-header min-vh-90 d-flex align-items-center"
+       style="background-image: url('{{ ASSETS_ROOT }}/img/bg10.jpg'); background-size: cover;">
+    <span class="mask" style="background-color: rgba(0, 0, 0, 0.9);"></span>
+
+    <div class="container" style="padding-top: 80px;">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <h4 class="text-white d-flex justify-content-between align-items-center">
+            Newspaper Detail
+            <div class="text-end">
+              <a href="{% url 'agency:newspaper-delete' pk=newspaper.id %}" class="btn btn-outline-danger btn-sm me-2">
+                Delete
+              </a>
+              <a href="{% url 'agency:newspaper-update' pk=newspaper.id %}" class="btn btn-outline-light btn-sm me-2">
+                Update
+              </a>
+            </div>
+          </h4>
+
+          <p><strong>Newspaper publication date:</strong>
+            <span style="color: white;">{{ newspaper.published_date }}</span>
+          </p>
+
+          <p><strong>The newspaper contains topics:</strong>
+            <span style="color: white;">({{ newspaper.topic.all.count }})</span>
+          </p>
+
+          {% for topic in newspaper.topic.all %}
+            <ul>
+              <li><span style="color: white;">{{ topic.name }}</span></li>
+            </ul>
+          {% endfor %}
+
+          <p><strong>Newspaper redactors:</strong>
+            <span style="color: white;">({{ newspaper.publishers.all.count }})</span>
+          </p>
+
+          {% for redactor in newspaper.publishers.all %}
+            <ul>
+              <li><span style="color: white;">{{ redactor.first_name }} {{ redactor.last_name }}</span></li>
+            </ul>
+          {% endfor %}
+
+          <p><strong>Newspaper content:</strong></p>
+          <span style="color: white;">{{ newspaper.content }}</span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include 'includes/footer.html' %}
+{% endblock footer %}
