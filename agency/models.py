@@ -1,9 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.urls import reverse
-
-from info_agency import settings
 
 
 class Topic(models.Model):
@@ -39,7 +38,7 @@ class Newspaper(models.Model):
     published_date = models.DateField(auto_now_add=True)
     topic = models.ManyToManyField(Topic, related_name="newspapers_by_topic")
     publishers = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, related_name="newspapers_by_publisher"
+        get_user_model(), related_name="newspapers_by_publisher"
     )
 
     def __str__(self):
